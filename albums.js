@@ -323,7 +323,9 @@ const albums = [
       "website-photos/New-York/9NY.jpeg",
       "website-photos/New-York/10NY.jpeg",
       "website-photos/New-York/11NY.jpeg",
-      "website-photos/New-York/12NY.jpeg"
+      "website-photos/New-York/12NY.jpeg",
+      "website-photos/New-York/13NY.jpeg",
+      "website-photos/New-York/14NY.jpeg"
     ],
     "sizes": [
       [
@@ -373,6 +375,14 @@ const albums = [
       [
         2288,
         1535
+      ],
+      [
+        2288,
+        1535
+      ],
+      [
+        1475,
+        2197
       ]
     ]
   },

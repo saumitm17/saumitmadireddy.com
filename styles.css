@@ -169,6 +169,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 
 /* A sideways phone keeps its own compact sidebar instead of the desktop UI. */
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   :root { --page-inset: 20px; }
   body, body:has(.gallery), body:has(.video-page), body:has(.photo-grid:not([hidden])) {
     display: block;
@@ -255,7 +256,8 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; max-width: 100%; }
   .portrait { max-height: calc(100svh - 40px); }
-  .about p { font-size: 14px; line-height: 1.6; }
+  .about > * { min-width: 0; max-width: 100%; }
+  .about p { font-size: 14px; line-height: 1.6; overflow-wrap: break-word; }
   .video-page { width: min(100%, calc((100svh - 40px) * 16 / 9)); }
 }
 

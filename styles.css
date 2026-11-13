@@ -6,7 +6,7 @@ button { color: #000; font: inherit; background: none; border: 0; cursor: pointe
 a:focus-visible, button:focus-visible { outline: 1px solid #000; outline-offset: 6px; }
 a:hover, button:hover { opacity: .55; }
 .sidebar { position: fixed; inset: 0 auto 0 0; width: 245px; padding: 50px 0 40px 50px; }
-.name { display: inline-block; font-size: 24px; font-weight: 500; line-height: 1.2; white-space: nowrap; }
+.name { display: inline-block; font-size: 28px; font-weight: 500; line-height: 1.2; white-space: nowrap; }
 .menu-bar { display: contents; }
 .personal-menu, .menu-switch { display: none; }
 nav { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin-top: 37px; }
@@ -41,7 +41,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 .about p { font-size: 16px; line-height: 1.8; margin: 0 0 16px; max-width: 350px; }
 .sr-only, .skip-link { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
 .skip-link:focus { width: auto; height: auto; clip-path: none; padding: 12px; background: white; z-index: 2; }
-@media (max-width: 900px) { :root { --page-inset: 32px; } .sidebar { width: 212px; padding-left: 32px; } .name { font-size: 18px; } main { margin-left: 212px; padding-left: 24px; } .about { grid-template-columns: 1fr; max-width: 450px; gap: 32px; } .portrait { max-height: 55vh; } }
+@media (max-width: 900px) { :root { --page-inset: 32px; } .sidebar { width: 212px; padding-left: 32px; } .name { font-size: 22px; } main { margin-left: 212px; padding-left: 24px; } .about { grid-template-columns: 1fr; max-width: 450px; gap: 32px; } .portrait { max-height: 55vh; } }
 @media (max-width: 600px) {
   :root { --mobile-section-gap: 20px; }
   #albums .video-link { display: none; }

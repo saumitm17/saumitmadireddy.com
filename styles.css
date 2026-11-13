@@ -100,6 +100,8 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     border: 1px solid #000;
     background: #000;
   }
+  .menu-switch:hover, .menu-switch:active { opacity: 1; }
+  .menu-switch { -webkit-tap-highlight-color: transparent; }
   .menu-switch::after { content: ""; position: absolute; inset: -12px; }
   body[data-personal-menu="true"] .menu-switch { background: #fff; }
   .about-link { grid-column: 1 / -1; grid-row: 3; margin: 0 0 16px; font-size: 12px; padding: 8px 0; }

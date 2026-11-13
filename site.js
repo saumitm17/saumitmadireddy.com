@@ -22,6 +22,7 @@ function swipeStep(dx, dy, elapsed) {
 }
 
 const onAbout = location.pathname.endsWith('/about.html');
+const onTmi = location.pathname.endsWith('/tmi.html');
 const nav = document.getElementById('albums');
 for (const album of albums) {
   const link = document.createElement('a');
@@ -30,11 +31,41 @@ for (const album of albums) {
   link.dataset.album = album.id;
   nav.append(link);
 }
-if (onAbout) {
-  document.querySelector('.about-link').setAttribute('aria-current', 'page');
+const menuSwitch = document.querySelector('.menu-switch');
+function setPersonalMenu(open) {
+  document.body.dataset.personalMenu = String(open);
+  menuSwitch.setAttribute('aria-pressed', String(open));
+  menuSwitch.setAttribute('aria-label', open ? 'Show photo albums' : 'Show personal links');
+}
+setPersonalMenu(onAbout || onTmi);
+menuSwitch.addEventListener('click', () => setPersonalMenu(document.body.dataset.personalMenu !== 'true'));
+
+// Align the visible square edge to the painted photo, including portrait photos.
+function alignMenuSquare() {
+  if (!window.matchMedia('(max-width: 600px)').matches) return;
+  const bar = document.querySelector('.menu-bar').getBoundingClientRect();
+  const image = document.querySelector('#photo');
+  const grid = document.querySelector('#grid');
+  let right = document.querySelector('main').getBoundingClientRect().right;
+  if (image && !document.querySelector('.gallery').hidden && image.naturalWidth) {
+    const box = image.getBoundingClientRect();
+    const scale = Math.min(box.width / image.naturalWidth, box.height / image.naturalHeight);
+    right = box.left + (box.width + image.naturalWidth * scale) / 2;
+  } else if (grid && !grid.hidden) {
+    right = grid.getBoundingClientRect().right;
+  }
+  document.body.style.setProperty('--menu-square-inset', `${Math.max(0, bar.right - right)}px`);
+}
+window.addEventListener('resize', alignMenuSquare);
+document.fonts.ready.then(alignMenuSquare);
+if (onAbout || onTmi) {
+  if (onAbout) document.querySelector('.about-link').setAttribute('aria-current', 'page');
+  document.querySelector(`[data-page="${onAbout ? 'about' : 'tmi'}"]`).setAttribute('aria-current', 'page');
 } else {
   let album, index = 0, gridOpen = false;
   const photo = document.getElementById('photo');
+  new ResizeObserver(alignMenuSquare).observe(photo);
+  photo.addEventListener('load', alignMenuSquare);
   const grid = document.getElementById('grid');
   const gallery = document.querySelector('.gallery');
   const toggle = document.getElementById('grid-toggle');
@@ -86,6 +117,7 @@ if (onAbout) {
     document.getElementById('previous').disabled = open;
     document.getElementById('next').disabled = open;
     if (open) layoutGallery();
+    requestAnimationFrame(alignMenuSquare);
   }
   function selectAlbum() {
     album = albums.find(a => a.id === location.hash.slice(1)) || albums.find(a => a.id === 'albania');

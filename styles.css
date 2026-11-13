@@ -7,6 +7,8 @@ a:focus-visible, button:focus-visible { outline: 1px solid #000; outline-offset:
 a:hover, button:hover { opacity: .55; }
 .sidebar { position: fixed; inset: 0 auto 0 0; width: 245px; padding: 50px 0 40px 50px; }
 .name { display: inline-block; font-size: 24px; font-weight: 500; line-height: 1.2; white-space: nowrap; }
+.menu-bar { display: contents; }
+.personal-menu, .menu-switch { display: none; }
 nav { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin-top: 37px; }
 nav a { font-size: 16px; line-height: 1.4; padding: .2em 0; }
 .about-link { line-height: 1.4; }
@@ -61,6 +63,45 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     margin-top: var(--mobile-section-gap);
   }
   nav a { display: flex; align-items: center; min-height: 40px; font-size: 14px; padding: 0; }
+
+  .sidebar > .about-link { display: none; }
+  .menu-bar {
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    position: relative;
+    min-width: 0;
+    min-height: 40px;
+    margin-top: var(--mobile-section-gap);
+    padding-right: calc(var(--menu-square-inset, 0px) + 32px);
+  }
+  .menu-bar nav {
+    flex: 1;
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0;
+    gap: 18px;
+  }
+  .menu-bar nav::-webkit-scrollbar { display: none; }
+  .menu-bar nav a { flex: none; white-space: nowrap; }
+  .menu-bar .personal-menu { display: none; }
+  body[data-personal-menu="true"] #albums { display: none; }
+  body[data-personal-menu="true"] .personal-menu { display: flex; }
+  .menu-switch {
+    display: block;
+    position: absolute;
+    right: var(--menu-square-inset, 0px);
+    top: 13px;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border: 1px solid #000;
+    background: #000;
+  }
+  .menu-switch::after { content: ""; position: absolute; inset: -12px; }
+  body[data-personal-menu="true"] .menu-switch { background: #fff; }
   .about-link { grid-column: 1 / -1; grid-row: 3; margin: 0 0 16px; font-size: 12px; padding: 8px 0; }
   main { grid-column: 1 / -1; grid-row: 4; margin: 0; min-width: 0; min-height: 0; padding: 0; }
   .photo-stage { height: auto; align-items: center; }

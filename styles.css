@@ -18,7 +18,7 @@ nav a { font-size: 16px; line-height: 1.4; padding: .2em 0; }
 .desktop-menu-switch::after { content: ""; position: absolute; inset: -8px 0; }
 .desktop-menu-switch:hover, .desktop-menu-switch:active { opacity: 1; }
 .desktop-menu-switch[aria-expanded="true"] { background: #fff; }
-.desktop-personal-links { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; margin-top: 20px; }
+.desktop-personal-links { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 20px; }
 .desktop-personal-links a { font-size: 12px; line-height: 1.4; }
 .desktop-personal-links .about-link { margin: 0; }
 .socials { display: flex; gap: 13px; margin-top: 17px; align-items: center; }
@@ -287,4 +287,3 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 .desktop-contact-switch:hover, .desktop-contact-switch:active { opacity: 1; }
 .desktop-contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding-left: calc(var(--landscape-switch-width, 66px) - 10px); }
 
-.desktop-contact-switch::before { content: ""; position: absolute; width: 0.5px; height: var(--contact-line-height, 0px); bottom: calc(100% + 1px); left: 50%; transform: translateX(-50%); background: #000; pointer-events: none; }

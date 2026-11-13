@@ -49,7 +49,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   }
   .sidebar { display: contents; }
   .name { grid-column: 1; grid-row: 1; font-size: 22px; justify-self: start; }
-  .socials { grid-column: 1 / -1; grid-row: 6; align-self: end; gap: 14px; margin: 20px 0 0; }
+  .socials { display: none; }
   .socials a { min-height: 44px; }
   nav {
     grid-column: 1 / -1;
@@ -84,16 +84,15 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     grid-template-rows: auto auto auto minmax(260px, 1fr) 0 auto;
   }
   body:has(.gallery) .about-link { margin-bottom: 0; }
-  body:has(.gallery) .socials { margin-top: 0; }
   main:has(.gallery) { height: 100%; }
   .gallery { height: 100%; }
   .gallery .photo-stage { height: 100%; }
   .gallery .photo-stage img { max-height: calc(100% - 100px); }
   .gallery-controls {
-    grid-row: 4;
-    align-self: center;
+    grid-row: 6;
+    align-self: end;
     justify-self: start;
-    transform: translateY(calc(var(--mobile-photo-height, 0px) / 2 + 24px));
+    transform: none;
   }
   body:has(.photo-grid:not([hidden])) { height: auto; min-height: 100svh; grid-template-rows: auto auto auto auto 0 1fr; }
   main:has(.photo-grid:not([hidden])) { height: auto; }

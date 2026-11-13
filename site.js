@@ -47,6 +47,19 @@ function setDesktopPersonalLinks(open) {
 }
 setDesktopPersonalLinks(onAbout || onTmi);
 desktopMenuSwitch.addEventListener('click', () => setDesktopPersonalLinks(desktopPersonalLinks.hidden));
+const desktopContactLinks = document.querySelector('.desktop-contact-links');
+const desktopContactSwitch = document.querySelector('.desktop-contact-switch');
+const desktopContactLabel = document.querySelector('.desktop-contact-label');
+function toggleDesktopContact() {
+  const open = desktopContactLinks.hidden;
+  desktopContactLinks.hidden = !open;
+  desktopContactSwitch.setAttribute('aria-expanded', String(open));
+  desktopContactLabel.setAttribute('aria-expanded', String(open));
+  desktopContactSwitch.setAttribute('aria-label', open ? 'Hide contact links' : 'Show contact links');
+}
+desktopContactSwitch.addEventListener('click', toggleDesktopContact);
+desktopContactLabel.addEventListener('click', toggleDesktopContact);
+
 const menuSwitch = document.querySelector('.menu-switch');
 function sizeLandscapeSwitch() {
   const title = nav.querySelector('[data-album="new-york"]');

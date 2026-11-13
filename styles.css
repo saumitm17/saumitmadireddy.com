@@ -278,3 +278,11 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   #photo[data-direction="previous"] { cursor: w-resize; }
   #photo[data-direction="next"] { cursor: e-resize; }
 }
+
+/* Desktop contact disclosure shares the rectangle's right edge. */
+.desktop-contact-row { display: flex; align-items: center; justify-content: space-between; width: var(--landscape-switch-width, 66px); }
+.desktop-contact-label { padding: 0; font-size: 12px; line-height: 1.4; text-align: left; }
+.desktop-contact-switch { flex: none; width: 10px; height: 10px; padding: 0; border: 1px solid #000; background: #000; }
+.desktop-contact-switch[aria-expanded="true"] { background: #fff; }
+.desktop-contact-switch:hover, .desktop-contact-switch:active { opacity: 1; }
+.desktop-contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; }

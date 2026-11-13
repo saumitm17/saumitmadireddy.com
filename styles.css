@@ -285,4 +285,4 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 .desktop-contact-switch { position: relative; flex: none; width: 10px; height: 10px; padding: 0; border: 1px solid #000; background: #000; }
 .desktop-contact-switch[aria-expanded="true"] { background: #fff; }
 .desktop-contact-switch:hover, .desktop-contact-switch:active { opacity: 1; }
-.desktop-contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding-left: calc(var(--landscape-switch-width, 66px) - 10px); }
+.desktop-contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }

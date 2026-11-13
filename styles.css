@@ -266,3 +266,8 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .menu-bar nav a { padding: 0; }
   .menu-switch { margin-top: 8px; }
 }
+
+@media (min-width: 601px) and (hover: hover) and (pointer: fine) {
+  #photo[data-direction="previous"] { cursor: w-resize; }
+  #photo[data-direction="next"] { cursor: e-resize; }
+}

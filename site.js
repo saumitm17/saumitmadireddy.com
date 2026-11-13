@@ -152,6 +152,26 @@ if (onAbout || onTmi || onVideo) {
     showPhoto();
     requestAnimationFrame(alignLandscapeControls);
   }
+  const desktopPhotoNavigation = matchMedia('(min-width: 601px) and (hover: hover) and (pointer: fine)');
+  function updatePhotoCursor(event) {
+    if (!desktopPhotoNavigation.matches || event.pointerType !== 'mouse') {
+      delete photo.dataset.direction;
+      return;
+    }
+    const bounds = photo.getBoundingClientRect();
+    photo.dataset.direction = event.clientX < bounds.left + bounds.width / 2 ? 'previous' : 'next';
+  }
+  photo.addEventListener('pointerenter', updatePhotoCursor);
+  photo.addEventListener('pointermove', updatePhotoCursor);
+  photo.addEventListener('pointerleave', () => { delete photo.dataset.direction; });
+  photo.addEventListener('click', event => {
+    if (gridOpen || !desktopPhotoNavigation.matches || (event.pointerType && event.pointerType !== 'mouse')) return;
+    const bounds = photo.getBoundingClientRect();
+    const step = event.clientX < bounds.left + bounds.width / 2 ? -1 : 1;
+    index = (index + step + album.photos.length) % album.photos.length;
+    showPhoto();
+  });
+  photo.draggable = false;
   const stage = document.querySelector('.photo-stage');
   let swipeStart = null;
   stage.addEventListener('touchstart', event => {

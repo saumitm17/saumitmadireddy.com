@@ -76,7 +76,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     min-width: 0;
     min-height: 40px;
     margin-top: var(--mobile-section-gap);
-    padding-right: calc(var(--menu-square-inset, 0px) + 32px);
+    padding-right: 32px;
   }
   .menu-bar nav {
     flex: 1;
@@ -95,7 +95,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .menu-switch {
     display: block;
     position: absolute;
-    right: var(--menu-square-inset, 0px);
+    right: 0;
     top: 13px;
     width: 14px;
     height: 14px;

@@ -219,9 +219,10 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     justify-content: flex-start;
     gap: 0;
     margin: 0;
-    transform: none;
+    transform: translateY(3px);
   }
   .gallery-controls button { display: flex; align-items: flex-start; font-size: 10px; line-height: 14px; font-style: italic; min-height: 24px; padding: 4px 0 0; }
+  #grid-toggle { display: flex; }
   .photo-navigation { align-items: flex-start; gap: 8px; }
   .photo-navigation > span { padding-top: 4px; line-height: 14px; font-size: 10px; }
   .menu-switch {

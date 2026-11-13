@@ -42,12 +42,14 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto auto auto 1fr;
+    min-height: 100svh;
     gap: 0 16px;
     padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
   }
   .sidebar { display: contents; }
   .name { grid-column: 1; grid-row: 1; font-size: 22px; justify-self: start; }
-  .socials { grid-column: 2; grid-row: 1; align-self: center; gap: 14px; margin: 0; }
+  .socials { grid-column: 1 / -1; grid-row: 6; align-self: end; gap: 14px; margin: 20px 0 0; }
   .socials a { min-height: 44px; }
   nav {
     grid-column: 1 / -1;
@@ -67,10 +69,10 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     grid-row: 5;
     position: static;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 12px;
-    gap: 16px;
+    gap: 10px;
   }
   .gallery-controls button { min-height: 44px; font-size: 13px; }
   .photo-navigation { gap: 8px; }

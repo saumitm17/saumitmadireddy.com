@@ -19,7 +19,7 @@ nav a { font-size: 16px; line-height: 1.4; padding: .2em 0; }
 .socials .solid { fill: currentColor; stroke: none; }
 main { margin-left: 245px; padding: var(--page-inset) var(--page-inset) var(--page-inset) 30px; min-height: 100svh; display: flex; align-items: center; justify-content: center; }
 .gallery { width: 100%; }
-.photo-stage { height: calc(100svh - 2 * var(--page-inset)); display: flex; align-items: flex-end; justify-content: center; }
+.photo-stage { touch-action: pan-y pinch-zoom; height: calc(100svh - 2 * var(--page-inset)); display: flex; align-items: flex-end; justify-content: center; }
 .photo-stage img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 .gallery-controls { position: fixed; bottom: calc(var(--page-inset) - 2px); display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 0; }
 .photo-navigation { display: flex; align-items: center; gap: 4px; }

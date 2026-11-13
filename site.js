@@ -15,6 +15,12 @@ function planGallery(ratios, width, gap) {
   return {items, height: items.length ? Math.max(...bottoms) - gap : 0};
 }
 
+// Ignore taps, mostly vertical gestures, and long holds.
+function swipeStep(dx, dy, elapsed) {
+  if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5 || elapsed > 1200) return 0;
+  return dx < 0 ? 1 : -1;
+}
+
 const onAbout = location.pathname.endsWith('/about.html');
 const nav = document.getElementById('albums');
 for (const album of albums) {
@@ -106,6 +112,28 @@ if (onAbout) {
     });
     showPhoto();
   }
+  const stage = document.querySelector('.photo-stage');
+  let swipeStart = null;
+  stage.addEventListener('touchstart', event => {
+    swipeStart = !gridOpen && event.touches.length === 1
+      ? {x: event.touches[0].clientX, y: event.touches[0].clientY, time: event.timeStamp}
+      : null;
+  }, {passive: true});
+  stage.addEventListener('touchmove', event => {
+    if (event.touches.length !== 1) swipeStart = null;
+  }, {passive: true});
+  stage.addEventListener('touchcancel', () => { swipeStart = null; }, {passive: true});
+  stage.addEventListener('touchend', event => {
+    const start = swipeStart;
+    swipeStart = null;
+    if (!start || gridOpen || event.touches.length || event.changedTouches.length !== 1) return;
+    const touch = event.changedTouches[0];
+    const step = swipeStep(touch.clientX - start.x, touch.clientY - start.y, event.timeStamp - start.time);
+    if (step) {
+      index = (index + step + album.photos.length) % album.photos.length;
+      showPhoto();
+    }
+  }, {passive: true});
   document.getElementById('previous').addEventListener('click', () => { index = (index - 1 + album.photos.length) % album.photos.length; showPhoto(); });
   document.getElementById('next').addEventListener('click', () => { index = (index + 1) % album.photos.length; showPhoto(); });
   toggle.addEventListener('click', () => { setGrid(!gridOpen); if (gridOpen) grid.querySelector('button').focus({preventScroll: true}); });

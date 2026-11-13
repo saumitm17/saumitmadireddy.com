@@ -14,7 +14,7 @@ nav a { font-size: 16px; line-height: 1.4; padding: .2em 0; }
 .about-link { line-height: 1.4; }
 [aria-current="page"] { color: #858585; }
 .about-link { display: block; width: fit-content; margin: 29px 0 0; padding: 0; text-align: left; font-size: 12px; }
-.desktop-menu-switch { display: block; position: relative; width: var(--landscape-switch-width, 66px); height: 14px; padding: 0; margin-top: 20px; border: 1px solid #000; background: #000; }
+.desktop-menu-switch { display: block; position: relative; width: var(--landscape-switch-width, 66px); height: 10px; padding: 0; margin-top: 20px; border: 1px solid #000; background: #000; }
 .desktop-menu-switch::after { content: ""; position: absolute; inset: -8px 0; }
 .desktop-menu-switch:hover, .desktop-menu-switch:active { opacity: 1; }
 .desktop-menu-switch[aria-expanded="true"] { background: #fff; }

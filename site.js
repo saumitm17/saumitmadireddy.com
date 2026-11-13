@@ -44,7 +44,7 @@ function setPersonalMenu(open) {
   menuSwitch.setAttribute('aria-pressed', String(open));
   menuSwitch.setAttribute('aria-label', open ? 'Show photo albums' : 'Show personal links');
 }
-setPersonalMenu(onAbout || onTmi);
+setPersonalMenu(onAbout || onTmi || onVideo);
 menuSwitch.addEventListener('click', () => setPersonalMenu(document.body.dataset.personalMenu !== 'true'));
 
 // Align the visible square edge to the painted photo, including portrait photos.
@@ -67,7 +67,7 @@ window.addEventListener('resize', alignMenuSquare);
 document.fonts.ready.then(alignMenuSquare);
 if (onAbout || onTmi || onVideo) {
   if (onAbout) document.querySelector('.about-link').setAttribute('aria-current', 'page');
-  if (!onVideo) document.querySelector(`[data-page="${onAbout ? 'about' : 'tmi'}"]`).setAttribute('aria-current', 'page');
+  document.querySelector(`[data-page="${onVideo ? 'video' : onAbout ? 'about' : 'tmi'}"]`).setAttribute('aria-current', 'page');
 } else {
   let album, index = 0, gridOpen = false;
   const photo = document.getElementById('photo');

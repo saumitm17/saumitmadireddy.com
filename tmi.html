@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Photographs and places by Saumit Madireddy.">
   <title>TMI — Saumit Madireddy</title>
-  <link rel="stylesheet" href="styles.css?v=desktop-links-8">
+  <link rel="stylesheet" href="styles.css?v=desktop-menu-9">
   <script src="albums.js" defer></script>
-  <script src="site.js?v=desktop-links-8" defer></script>
+  <script src="site.js?v=desktop-menu-9" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to tmi</a>
@@ -25,7 +25,8 @@
       </nav>
       <button class="menu-switch" type="button" aria-label="Show personal links" aria-controls="albums personal-menu" aria-pressed="false"></button>
     </div>
-    <div class="desktop-personal-links">
+    <button class="desktop-menu-switch" type="button" aria-label="Show personal links" aria-expanded="false" aria-controls="desktop-personal-links"></button>
+    <div class="desktop-personal-links" id="desktop-personal-links" hidden>
       <a class="about-link" href="about.html">about</a>
       <a href="tmi.html" data-desktop-page="tmi">tmi</a>
       <a href="mailto:madireddysaumit@gmail.com">email</a>

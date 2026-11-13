@@ -38,6 +38,15 @@ videoLink.href = 'video.html';
 videoLink.className = 'video-link';
 if (onVideo) videoLink.setAttribute('aria-current', 'page');
 nav.append(videoLink);
+const desktopMenuSwitch = document.querySelector('.desktop-menu-switch');
+const desktopPersonalLinks = document.querySelector('.desktop-personal-links');
+function setDesktopPersonalLinks(open) {
+  desktopPersonalLinks.hidden = !open;
+  desktopMenuSwitch.setAttribute('aria-expanded', String(open));
+  desktopMenuSwitch.setAttribute('aria-label', open ? 'Hide personal links' : 'Show personal links');
+}
+setDesktopPersonalLinks(onAbout || onTmi);
+desktopMenuSwitch.addEventListener('click', () => setDesktopPersonalLinks(desktopPersonalLinks.hidden));
 const menuSwitch = document.querySelector('.menu-switch');
 function sizeLandscapeSwitch() {
   const title = nav.querySelector('[data-album="new-york"]');

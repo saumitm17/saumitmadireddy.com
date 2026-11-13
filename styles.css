@@ -286,4 +286,3 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 .desktop-contact-switch[aria-expanded="true"] { background: #fff; }
 .desktop-contact-switch:hover, .desktop-contact-switch:active { opacity: 1; }
 .desktop-contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding-left: calc(var(--landscape-switch-width, 66px) - 10px); }
-

@@ -14,6 +14,9 @@ nav a { font-size: 16px; line-height: 1.4; padding: .2em 0; }
 .about-link { line-height: 1.4; }
 [aria-current="page"] { color: #858585; }
 .about-link { display: block; width: fit-content; margin: 29px 0 0; padding: 0; text-align: left; font-size: 12px; }
+.desktop-personal-links { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; margin-top: 29px; }
+.desktop-personal-links a { font-size: 12px; line-height: 1.4; }
+.desktop-personal-links .about-link { margin: 0; }
 .socials { display: flex; gap: 13px; margin-top: 17px; align-items: center; }
 .socials a { display: flex; align-items: center; justify-content: center; padding: 4px 0; line-height: 0; }
 .socials svg { display: block; flex: none; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5; }
@@ -67,7 +70,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   }
   nav a { display: flex; align-items: center; min-height: 40px; font-size: 14px; padding: 0; }
 
-  .sidebar > .about-link { display: none; }
+  .desktop-personal-links { display: none; }
   .menu-bar {
     display: flex;
     grid-column: 1 / -1;
@@ -209,7 +212,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .menu-bar .personal-menu { display: none; }
   body[data-personal-menu="true"] #albums { display: none; }
   body[data-personal-menu="true"] .personal-menu { display: flex; }
-  .sidebar > .about-link, .socials { display: none; }
+  .desktop-personal-links, .socials { display: none; }
   .gallery-controls {
     display: flex;
     position: fixed;

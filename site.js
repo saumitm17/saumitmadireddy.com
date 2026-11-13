@@ -59,6 +59,7 @@ menuSwitch.addEventListener('click', () => setPersonalMenu(document.body.dataset
 
 if (onAbout || onTmi || onVideo) {
   if (onAbout) document.querySelector('.about-link').setAttribute('aria-current', 'page');
+  if (onTmi) document.querySelector('[data-desktop-page="tmi"]').setAttribute('aria-current', 'page');
   document.querySelector(`[data-page="${onVideo ? 'video' : onAbout ? 'about' : 'tmi'}"]`).setAttribute('aria-current', 'page');
 } else {
   let album, index = 0, gridOpen = false;

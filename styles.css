@@ -51,7 +51,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     grid-template-rows: auto auto auto auto auto 1fr;
     min-height: 100svh;
     gap: 0 16px;
-    padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    padding: max(24px, env(safe-area-inset-top)) calc(20px + env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) calc(20px + env(safe-area-inset-left));
   }
   .sidebar { display: contents; }
   .name { grid-column: 1; grid-row: 1; font-size: 22px; justify-self: start; }
@@ -180,7 +180,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .sidebar {
     display: block;
     position: fixed;
-    inset: 20px auto 20px max(24px, env(safe-area-inset-left));
+    inset: calc(20px + env(safe-area-inset-top)) auto calc(20px + env(safe-area-inset-bottom)) calc(24px + env(safe-area-inset-left));
     width: 148px;
     padding: 0;
     overflow-y: auto;
@@ -213,7 +213,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .gallery-controls {
     display: flex;
     position: fixed;
-    left: max(24px, env(safe-area-inset-left));
+    left: calc(24px + env(safe-area-inset-left));
     bottom: calc(100svh - var(--landscape-photo-bottom, calc(100svh - 20px)) - 2px);
     align-items: flex-start;
     flex-direction: column;
@@ -243,22 +243,22 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   body[data-personal-menu="true"] .menu-switch { background: #fff; }
   main, main:has(.gallery), main:has(.video-page), main:has(.about), main:has(.photo-grid:not([hidden])) {
     display: flex;
-    margin-left: 172px;
-    padding: 20px max(24px, env(safe-area-inset-right)) 20px 20px;
+    margin-left: calc(172px + env(safe-area-inset-left));
+    padding: calc(20px + env(safe-area-inset-top)) calc(24px + env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) 20px;
     min-height: 100svh;
     height: auto;
     align-items: center;
     justify-content: center;
   }
   .gallery { width: 100%; height: auto; }
-  .photo-stage, .gallery .photo-stage { height: calc(100svh - 40px); align-items: center; justify-content: center; }
+  .photo-stage, .gallery .photo-stage { height: calc(100svh - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); align-items: center; justify-content: center; }
   .photo-stage img, .gallery .photo-stage img { width: 100%; height: 100%; max-height: 100%; object-fit: contain; object-position: center; }
   main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; max-width: 100%; }
-  .portrait { max-height: calc(100svh - 40px); }
+  .portrait { max-height: calc(100svh - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
   .about > * { min-width: 0; max-width: 100%; }
   .about p { font-size: 14px; line-height: 1.6; overflow-wrap: break-word; }
-  .video-page { width: min(100%, calc((100svh - 40px) * 16 / 9)); }
+  .video-page { width: min(100%, calc((100svh - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 16 / 9)); }
 }
 
 @media (orientation: landscape) and (max-height: 350px) and (max-width: 1100px) {

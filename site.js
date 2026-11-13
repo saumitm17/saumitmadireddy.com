@@ -39,6 +39,16 @@ videoLink.className = 'video-link';
 if (onVideo) videoLink.setAttribute('aria-current', 'page');
 nav.append(videoLink);
 const menuSwitch = document.querySelector('.menu-switch');
+function sizeLandscapeSwitch() {
+  const title = nav.querySelector('[data-album="new-york"]');
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  context.font = getComputedStyle(title).font;
+  document.documentElement.style.setProperty('--landscape-switch-width', `${Math.ceil(context.measureText(title.textContent).width)}px`);
+}
+window.addEventListener('resize', sizeLandscapeSwitch);
+document.fonts.ready.then(sizeLandscapeSwitch);
+
 function setPersonalMenu(open) {
   document.body.dataset.personalMenu = String(open);
   menuSwitch.setAttribute('aria-pressed', String(open));

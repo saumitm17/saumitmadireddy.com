@@ -166,3 +166,79 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     padding-right: var(--page-inset);
   }
 }
+
+/* A sideways phone keeps its own compact sidebar instead of the desktop UI. */
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  :root { --page-inset: 20px; }
+  body, body:has(.gallery), body:has(.video-page), body:has(.photo-grid:not([hidden])) {
+    display: block;
+    height: auto;
+    min-height: 100svh;
+    padding: 0;
+  }
+  .sidebar {
+    display: block;
+    position: fixed;
+    inset: 20px auto 20px max(24px, env(safe-area-inset-left));
+    width: 148px;
+    padding: 0;
+    overflow-y: auto;
+  }
+  .name { font-size: 22px; }
+  .menu-bar {
+    display: block;
+    position: relative;
+    width: max-content;
+    min-width: 0;
+    min-height: 0;
+    margin-top: 22px;
+    padding: 0 0 12px;
+  }
+  .menu-bar nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 0;
+    margin: 0;
+    overflow: visible;
+  }
+  .menu-bar nav a { font-size: 14px; line-height: 1.4; min-height: 0; padding: 4px 0; white-space: nowrap; }
+  #albums .video-link { display: none; }
+  .menu-bar .personal-menu { display: none; }
+  body[data-personal-menu="true"] #albums { display: none; }
+  body[data-personal-menu="true"] .personal-menu { display: flex; }
+  .sidebar > .about-link, .socials, .gallery-controls { display: none; }
+  .menu-switch {
+    display: block;
+    position: relative;
+    inset: auto;
+    width: var(--landscape-switch-width, 60px);
+    height: 14px;
+    padding: 0;
+    margin-top: 10px;
+    border: 1px solid #000;
+    background: #000;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-switch:hover, .menu-switch:active { opacity: 1; }
+  .menu-switch::after { content: ""; position: absolute; inset: -8px 0; }
+  body[data-personal-menu="true"] .menu-switch { background: #fff; }
+  main, main:has(.gallery), main:has(.video-page), main:has(.about), main:has(.photo-grid:not([hidden])) {
+    display: flex;
+    margin-left: 172px;
+    padding: 20px max(24px, env(safe-area-inset-right)) 20px 20px;
+    min-height: 100svh;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery { width: 100%; height: auto; }
+  .photo-stage, .gallery .photo-stage { height: calc(100svh - 40px); align-items: center; justify-content: center; }
+  .photo-stage img, .gallery .photo-stage img { width: 100%; height: 100%; max-height: 100%; object-fit: contain; object-position: center; }
+  main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
+  .about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; max-width: 100%; }
+  .portrait { max-height: calc(100svh - 40px); }
+  .about p { font-size: 14px; line-height: 1.6; }
+  .video-page { width: min(100%, calc((100svh - 40px) * 16 / 9)); }
+}

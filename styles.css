@@ -33,6 +33,8 @@ main { margin-left: 245px; padding: var(--page-inset) var(--page-inset) var(--pa
 .photo-grid img { display: block; width: 100%; height: auto; }
 main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 [hidden] { display: none !important; }
+.video-page { width: 100%; max-width: 1180px; }
+.video-page iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; }
 .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, .9fr); gap: clamp(32px, 5vw, 80px); align-items: center; width: 100%; max-width: 1000px; }
 .portrait { display: block; width: 100%; height: auto; max-height: 72vh; object-fit: contain; }
 .about h1 { font-size: 16px; font-weight: 700; margin: 0 0 24px; }
@@ -42,6 +44,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 @media (max-width: 900px) { :root { --page-inset: 32px; } .sidebar { width: 212px; padding-left: 32px; } .name { font-size: 18px; } main { margin-left: 212px; padding-left: 24px; } .about { grid-template-columns: 1fr; max-width: 450px; gap: 32px; } .portrait { max-height: 55vh; } }
 @media (max-width: 600px) {
   :root { --mobile-section-gap: 20px; }
+  #albums .video-link { display: none; }
   body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;

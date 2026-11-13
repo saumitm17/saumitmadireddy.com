@@ -23,6 +23,7 @@ function swipeStep(dx, dy, elapsed) {
 
 const onAbout = location.pathname.endsWith('/about.html');
 const onTmi = location.pathname.endsWith('/tmi.html');
+const onVideo = location.pathname.endsWith('/video.html');
 const nav = document.getElementById('albums');
 for (const album of albums) {
   const link = document.createElement('a');
@@ -31,6 +32,12 @@ for (const album of albums) {
   link.dataset.album = album.id;
   nav.append(link);
 }
+const videoLink = document.createElement('a');
+videoLink.textContent = 'Video';
+videoLink.href = 'video.html';
+videoLink.className = 'video-link';
+if (onVideo) videoLink.setAttribute('aria-current', 'page');
+nav.append(videoLink);
 const menuSwitch = document.querySelector('.menu-switch');
 function setPersonalMenu(open) {
   document.body.dataset.personalMenu = String(open);
@@ -58,9 +65,9 @@ function alignMenuSquare() {
 }
 window.addEventListener('resize', alignMenuSquare);
 document.fonts.ready.then(alignMenuSquare);
-if (onAbout || onTmi) {
+if (onAbout || onTmi || onVideo) {
   if (onAbout) document.querySelector('.about-link').setAttribute('aria-current', 'page');
-  document.querySelector(`[data-page="${onAbout ? 'about' : 'tmi'}"]`).setAttribute('aria-current', 'page');
+  if (!onVideo) document.querySelector(`[data-page="${onAbout ? 'about' : 'tmi'}"]`).setAttribute('aria-current', 'page');
 } else {
   let album, index = 0, gridOpen = false;
   const photo = document.getElementById('photo');

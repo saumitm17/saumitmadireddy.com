@@ -76,6 +76,15 @@ if (onAbout || onTmi || onVideo) {
   document.fonts.ready.then(updatePhotoArea);
   updatePhotoArea();
 
+  function alignLandscapeControls() {
+    if (!album || gridOpen || !matchMedia('(orientation: landscape) and (max-height: 600px) and (max-width: 1100px)').matches) return;
+    const stage = document.querySelector('.photo-stage').getBoundingClientRect();
+    const [width, height] = album.sizes[0];
+    const displayedHeight = Math.min(stage.height, stage.width * height / width);
+    document.documentElement.style.setProperty('--landscape-photo-bottom', `${stage.top + (stage.height + displayedHeight) / 2}px`);
+  }
+  new ResizeObserver(alignLandscapeControls).observe(document.querySelector('.photo-stage'));
+  window.addEventListener('resize', alignLandscapeControls);
   function showPhoto() {
     photo.src = album.photos[index];
     photo.alt = `${album.name}, photograph ${index + 1}`;
@@ -114,6 +123,7 @@ if (onAbout || onTmi || onVideo) {
     document.getElementById('previous').disabled = open;
     document.getElementById('next').disabled = open;
     if (open) layoutGallery();
+    else requestAnimationFrame(alignLandscapeControls);
   }
   function selectAlbum() {
     album = albums.find(a => a.id === location.hash.slice(1)) || albums.find(a => a.id === 'albania');
@@ -140,6 +150,7 @@ if (onAbout || onTmi || onVideo) {
       grid.append(button);
     });
     showPhoto();
+    requestAnimationFrame(alignLandscapeControls);
   }
   const stage = document.querySelector('.photo-stage');
   let swipeStart = null;

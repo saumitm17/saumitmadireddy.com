@@ -208,7 +208,22 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .menu-bar .personal-menu { display: none; }
   body[data-personal-menu="true"] #albums { display: none; }
   body[data-personal-menu="true"] .personal-menu { display: flex; }
-  .sidebar > .about-link, .socials, .gallery-controls { display: none; }
+  .sidebar > .about-link, .socials { display: none; }
+  .gallery-controls {
+    display: flex;
+    position: fixed;
+    left: max(24px, env(safe-area-inset-left));
+    bottom: calc(100svh - var(--landscape-photo-bottom, calc(100svh - 20px)) - 2px);
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    margin: 0;
+    transform: none;
+  }
+  .gallery-controls button { display: flex; align-items: flex-start; font-size: 13px; line-height: 14px; font-style: italic; min-height: 24px; padding: 4px 0 0; }
+  .photo-navigation { align-items: flex-start; gap: 8px; }
+  .photo-navigation > span { padding-top: 4px; line-height: 14px; font-size: 13px; }
   .menu-switch {
     display: block;
     position: relative;
@@ -241,4 +256,10 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   .portrait { max-height: calc(100svh - 40px); }
   .about p { font-size: 14px; line-height: 1.6; }
   .video-page { width: min(100%, calc((100svh - 40px) * 16 / 9)); }
+}
+
+@media (orientation: landscape) and (max-height: 350px) and (max-width: 1100px) {
+  .menu-bar { margin-top: 10px; padding-bottom: 0; }
+  .menu-bar nav a { padding: 0; }
+  .menu-switch { margin-top: 8px; }
 }

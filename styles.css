@@ -121,10 +121,10 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     margin-top: 0;
     gap: 0;
   }
-  .gallery-controls button { display: flex; align-items: flex-start; min-height: 24px; padding: 4px 0 0; font-size: 13px; }
+  .gallery-controls button { display: flex; align-items: flex-start; min-height: 24px; padding: 4px 0 0; font-size: 10px; }
   #grid-toggle { display: flex; }
   .photo-navigation { align-items: flex-start; gap: 8px; }
-  .photo-navigation > span { padding-top: 4px; line-height: 14px; font-size: 13px; }
+  .photo-navigation > span { padding-top: 4px; line-height: 14px; font-size: 10px; }
   /* Center the photo itself in the space between about and the footer. */
   body:has(.gallery) {
     height: max(100svh, 640px);
@@ -221,9 +221,9 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     margin: 0;
     transform: none;
   }
-  .gallery-controls button { display: flex; align-items: flex-start; font-size: 13px; line-height: 14px; font-style: italic; min-height: 24px; padding: 4px 0 0; }
+  .gallery-controls button { display: flex; align-items: flex-start; font-size: 10px; line-height: 14px; font-style: italic; min-height: 24px; padding: 4px 0 0; }
   .photo-navigation { align-items: flex-start; gap: 8px; }
-  .photo-navigation > span { padding-top: 4px; line-height: 14px; font-size: 13px; }
+  .photo-navigation > span { padding-top: 4px; line-height: 14px; font-size: 10px; }
   .menu-switch {
     display: block;
     position: relative;

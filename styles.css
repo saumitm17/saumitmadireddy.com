@@ -145,7 +145,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
     transform: none;
   }
   body:has(.photo-grid:not([hidden])) { height: auto; min-height: 100svh; grid-template-rows: auto auto auto auto 0 1fr; }
-  main:has(.photo-grid:not([hidden])) { height: auto; padding-top: var(--mobile-section-gap); }
+  main:has(.photo-grid:not([hidden])), main:has(.about) { height: auto; align-items: flex-start; padding-top: var(--mobile-section-gap); }
   .about { max-width: none; gap: 24px; }
   .portrait { max-height: 55svh; }
   .about p { font-size: 15px; max-width: none; }

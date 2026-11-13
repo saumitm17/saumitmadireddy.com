@@ -39,6 +39,10 @@ if (onAbout) {
   const gallery = document.querySelector('.gallery');
   const toggle = document.getElementById('grid-toggle');
   const nameTitle = document.querySelector('.name');
+  new ResizeObserver(() => {
+    document.documentElement.style.setProperty('--mobile-photo-height', `${photo.getBoundingClientRect().height}px`);
+  }).observe(photo);
+
   function updatePhotoArea() {
     document.documentElement.style.setProperty('--name-right', `${nameTitle.getBoundingClientRect().right}px`);
   }

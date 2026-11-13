@@ -78,6 +78,25 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   #grid-toggle { display: flex; }
   .photo-navigation { align-items: flex-start; gap: 8px; }
   .photo-navigation > span { padding-top: 4px; line-height: 14px; font-size: 13px; }
+  /* Center the photo itself in the space between about and the footer. */
+  body:has(.gallery) {
+    height: max(100svh, 640px);
+    grid-template-rows: auto auto auto minmax(260px, 1fr) 0 auto;
+  }
+  body:has(.gallery) .about-link { margin-bottom: 0; }
+  body:has(.gallery) .socials { margin-top: 0; }
+  main:has(.gallery) { height: 100%; }
+  .gallery { height: 100%; }
+  .gallery .photo-stage { height: 100%; }
+  .gallery .photo-stage img { max-height: calc(100% - 100px); }
+  .gallery-controls {
+    grid-row: 4;
+    align-self: center;
+    justify-self: start;
+    transform: translateY(calc(var(--mobile-photo-height, 0px) / 2 + 24px));
+  }
+  body:has(.photo-grid:not([hidden])) { height: auto; min-height: 100svh; grid-template-rows: auto auto auto auto 0 1fr; }
+  main:has(.photo-grid:not([hidden])) { height: auto; }
   .about { max-width: none; gap: 24px; }
   .portrait { max-height: 55svh; }
   .about p { font-size: 15px; max-width: none; }

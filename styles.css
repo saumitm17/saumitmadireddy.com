@@ -38,7 +38,46 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 .sr-only, .skip-link { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
 .skip-link:focus { width: auto; height: auto; clip-path: none; padding: 12px; background: white; z-index: 2; }
 @media (max-width: 900px) { :root { --page-inset: 32px; } .sidebar { width: 212px; padding-left: 32px; } .name { font-size: 18px; } main { margin-left: 212px; padding-left: 24px; } .about { grid-template-columns: 1fr; max-width: 450px; gap: 32px; } .portrait { max-height: 55vh; } }
-@media (max-width: 600px) { .sidebar { position: static; width: 100%; padding: 30px 24px 0; } .name { font-size: 20px; } nav { flex-direction: row; flex-wrap: wrap; gap: 12px 20px; margin-top: 25px; } nav a { font-size: 13px; } .about-link { margin-top: 20px; } .socials { margin-top: 16px; gap: 16px; } .gallery-controls { position: static; margin-top: 16px; } main { margin-left: 0; min-height: auto; padding: 36px 24px; } .photo-stage { height: 68svh; } .about p { font-size: 15px; } }
+@media (max-width: 600px) {
+  body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 16px;
+    padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+  }
+  .sidebar { display: contents; }
+  .name { grid-column: 1; grid-row: 1; font-size: 22px; justify-self: start; }
+  .socials { grid-column: 2; grid-row: 1; align-self: center; gap: 14px; margin: 0; }
+  .socials a { min-height: 44px; }
+  nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 18px;
+    margin-top: 20px;
+  }
+  nav a { display: flex; align-items: center; min-height: 40px; font-size: 14px; padding: 0; }
+  .about-link { grid-column: 1 / -1; grid-row: 3; margin: 0 0 16px; font-size: 12px; padding: 8px 0; }
+  main { grid-column: 1 / -1; grid-row: 4; margin: 0; min-width: 0; min-height: 0; padding: 0; }
+  .photo-stage { height: auto; align-items: center; }
+  .photo-stage img { max-height: 56svh; }
+  .gallery-controls {
+    grid-column: 1 / -1;
+    grid-row: 5;
+    position: static;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    gap: 16px;
+  }
+  .gallery-controls button { min-height: 44px; font-size: 13px; }
+  .photo-navigation { gap: 8px; }
+  .about { max-width: none; gap: 24px; }
+  .portrait { max-height: 55svh; }
+  .about p { font-size: 15px; max-width: none; }
+}
 
 @media (min-width: 601px) {
   main:has(.gallery) {

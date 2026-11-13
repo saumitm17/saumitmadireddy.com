@@ -378,7 +378,7 @@ const albums = [
   },
   {
     "id": "upstateny",
-    "name": "Upstate NY",
+    "name": "Upstate",
     "photos": [
       "website-photos/UpstateNY/1_UpstateNY.JPG",
       "website-photos/UpstateNY/2_UpstateNY.JPG",

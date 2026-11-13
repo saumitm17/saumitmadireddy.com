@@ -50,6 +50,16 @@ desktopMenuSwitch.addEventListener('click', () => setDesktopPersonalLinks(deskto
 const desktopContactLinks = document.querySelector('.desktop-contact-links');
 const desktopContactSwitch = document.querySelector('.desktop-contact-switch');
 const desktopContactLabel = document.querySelector('.desktop-contact-label');
+function alignDesktopContactLine() {
+  if (desktopPersonalLinks.hidden) return;
+  const square = desktopContactSwitch.getBoundingClientRect();
+  const rectangle = desktopMenuSwitch.getBoundingClientRect();
+  desktopContactSwitch.style.setProperty('--contact-line-height', `${Math.max(0, square.top - rectangle.bottom)}px`);
+}
+new ResizeObserver(alignDesktopContactLine).observe(desktopPersonalLinks);
+window.addEventListener('resize', alignDesktopContactLine);
+document.fonts.ready.then(alignDesktopContactLine);
+
 function toggleDesktopContact() {
   const open = desktopContactLinks.hidden;
   desktopContactLinks.hidden = !open;

@@ -287,4 +287,4 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 .desktop-contact-switch:hover, .desktop-contact-switch:active { opacity: 1; }
 .desktop-contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; padding-left: calc(var(--landscape-switch-width, 66px) - 14px); }
 
-.desktop-contact-switch::before { content: ""; position: absolute; width: 1px; height: var(--contact-line-height, 0px); bottom: calc(100% + 1px); right: -1px; background: #000; pointer-events: none; }
+.desktop-contact-switch::before { content: ""; position: absolute; width: 1px; height: var(--contact-line-height, 0px); bottom: calc(100% + 1px); left: 50%; transform: translateX(-50%); background: #000; pointer-events: none; }

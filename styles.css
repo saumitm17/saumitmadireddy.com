@@ -285,7 +285,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 }
 
 /* About page background includes overscroll areas. */
-html.about-page, .about-page body { background-color: #708869; }
+html.about-page, .about-page body { background-color: #3c493f; }
 .about-page .desktop-menu-switch[aria-expanded="true"],
 .about-page body[data-personal-menu="true"] .menu-switch { background: transparent; }
 
@@ -295,6 +295,6 @@ a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity
 
 .about .portrait { border: 4px solid #211008; }
 
-.about-page { color: #211008; }
+.about-page { color: #fff; }
 .about-page button,
-.about-page a[aria-current="page"] { color: #211008; }
+.about-page a[aria-current="page"] { color: #fff; }

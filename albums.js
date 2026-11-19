@@ -318,9 +318,9 @@ const albums = [
       "website-photos/New-York/13NY.jpeg",
       "website-photos/New-York/7NY.jpeg",
       "website-photos/New-York/6NY.jpeg",
-      "website-photos/New-York/5NY.jpeg",
-      "website-photos/New-York/8NY.jpeg",
       "website-photos/New-York/14NY.jpeg",
+      "website-photos/New-York/8NY.jpeg",
+      "website-photos/New-York/5NY.jpeg",
       "website-photos/New-York/9NY.jpeg",
       "website-photos/New-York/10NY.jpeg",
       "website-photos/New-York/11NY.jpeg",
@@ -353,16 +353,16 @@ const albums = [
         1535
       ],
       [
-        2047,
-        1535
+        1475,
+        2197
       ],
       [
         1535,
         2287
       ],
       [
-        1475,
-        2197
+        2047,
+        1535
       ],
       [
         2288,

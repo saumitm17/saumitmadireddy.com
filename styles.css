@@ -324,3 +324,10 @@ a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity
  .sleeping-reserve { visibility: hidden; }
 .sleeping-typing { position: absolute; left: 0; top: 0; }
 .sleeping-dots { position: absolute; left: 100%; top: 0; white-space: nowrap; }
+
+.tmi .sleeping-expanded { width: min(600px, 100%); white-space: normal; }
+.sleeping-expanded .sleeping-typing { width: 100%; }
+html.tmi-is-dark, .tmi-is-dark body { background: #000; overflow: hidden; }
+.tmi-is-dark body > :not(.tmi-darkness) { display: none !important; }
+.tmi-darkness { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; background: #000; }
+.tmi-darkness p { width: min(600px, 100%); margin: 0; font-size: 16px; line-height: 1.8; text-align: center; color: #ffe990; text-shadow: 0 0 6px #ffd84d, 0 0 20px rgba(255, 211, 64, .65); }

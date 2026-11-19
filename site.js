@@ -33,24 +33,54 @@ if (onTmi) {
   alignTmiArea();
   const typing = document.querySelector('.sleeping-typing');
   const dots = document.querySelector('.sleeping-dots');
-  const message = 'saumit is sleeping right now';
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    typing.textContent = message;
-    dots.textContent = '.........';
-  } else {
+  const reserve = document.querySelector('.sleeping-reserve');
+  const paragraph = document.querySelector('.sleeping-message');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let typingTimer;
+  function typeMessage(target, message, trailingDots = false) {
+    window.clearTimeout(typingTimer);
+    dots.textContent = '';
+    target.textContent = '';
     let letter = 0;
-    const typeLetter = () => {
-      typing.textContent = message.slice(0, ++letter);
-      if (letter < message.length) window.setTimeout(typeLetter, 75);
-      else typeDot();
-    };
     const typeDot = () => {
-      // Keep typing beyond the clipped viewport without growing the DOM forever.
       if (dots.textContent.length < 512) dots.textContent += '.';
-      window.setTimeout(typeDot, 220);
+      typingTimer = window.setTimeout(typeDot, 220);
     };
-    window.setTimeout(typeLetter, 300);
+    const typeLetter = () => {
+      target.textContent = message.slice(0, ++letter);
+      if (letter < message.length) typingTimer = window.setTimeout(typeLetter, 75);
+      else if (trailingDots) typeDot();
+    };
+    if (reducedMotion) {
+      target.textContent = message;
+      if (trailingDots) dots.textContent = '.........';
+    } else typingTimer = window.setTimeout(typeLetter, 300);
   }
+  typeMessage(typing, 'saumit is sleeping right now', true);
+  let clicks = 0;
+  document.addEventListener('click', () => {
+    clicks += 1;
+    if (clicks === 5) {
+      const message = 'it sounds like a jet engine right now. he snores so loud. you will not wake him up.';
+      paragraph.classList.add('sleeping-expanded');
+      paragraph.setAttribute('aria-label', message);
+      reserve.textContent = message;
+      typeMessage(typing, message);
+    } else if (clicks === 10) {
+      const message = 'this is what he sees. nothing but darkness.';
+      const darkness = document.createElement('div');
+      darkness.className = 'tmi-darkness';
+      darkness.setAttribute('role', 'status');
+      darkness.setAttribute('aria-label', message);
+      const text = document.createElement('p');
+      text.setAttribute('aria-hidden', 'true');
+      darkness.append(text);
+      document.body.append(darkness);
+      document.documentElement.classList.add('tmi-is-dark');
+      window.scrollTo(0, 0);
+      typeMessage(text, message);
+    }
+  });
 }
 const nav = document.getElementById('albums');
 for (const album of albums) {

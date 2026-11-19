@@ -31,6 +31,26 @@ if (onTmi) {
   window.addEventListener('resize', alignTmiArea);
   document.fonts.ready.then(alignTmiArea);
   alignTmiArea();
+  const typing = document.querySelector('.sleeping-typing');
+  const dots = document.querySelector('.sleeping-dots');
+  const message = 'saumit is sleeping right now';
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    typing.textContent = message;
+    dots.textContent = '.........';
+  } else {
+    let letter = 0;
+    const typeLetter = () => {
+      typing.textContent = message.slice(0, ++letter);
+      if (letter < message.length) window.setTimeout(typeLetter, 75);
+      else typeDot();
+    };
+    const typeDot = () => {
+      // Keep typing beyond the clipped viewport without growing the DOM forever.
+      if (dots.textContent.length < 512) dots.textContent += '.';
+      window.setTimeout(typeDot, 220);
+    };
+    window.setTimeout(typeLetter, 300);
+  }
 }
 const nav = document.getElementById('albums');
 for (const album of albums) {

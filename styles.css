@@ -318,3 +318,9 @@ a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
   .tmi-page main { margin-left: calc(172px + env(safe-area-inset-left)); padding: calc(20px + env(safe-area-inset-top)) calc(24px + env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) 20px; }
 }
+
+.tmi-page main { overflow: hidden; }
+.tmi .sleeping-message { display: inline-block; position: relative; white-space: nowrap; text-align: left; }
+ .sleeping-reserve { visibility: hidden; }
+.sleeping-typing { position: absolute; left: 0; top: 0; }
+.sleeping-dots { position: absolute; left: 100%; top: 0; white-space: nowrap; }

@@ -397,7 +397,9 @@ const albums = [
       "website-photos/UpstateNY/5_UpstateNY.JPG",
       "website-photos/UpstateNY/6_UpstateNY.JPG",
       "website-photos/UpstateNY/7_UpstateNY.JPG",
-      "website-photos/UpstateNY/8_UpstateNY.JPG"
+      "website-photos/UpstateNY/8_UpstateNY.JPG",
+      "website-photos/UpstateNY/9_UpstateNY.JPG",
+      "website-photos/UpstateNY/10_UpstateNY.JPG"
     ],
     "sizes": [
       [
@@ -431,6 +433,14 @@ const albums = [
       [
         1818,
         1228
+      ],
+      [
+        2288,
+        1535
+      ],
+      [
+        2288,
+        1535
       ]
     ]
   }

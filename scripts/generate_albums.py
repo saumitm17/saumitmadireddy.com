@@ -27,6 +27,9 @@ def image_size(path):
                 return [width, height]
             f.seek(length - 2, 1)
 
+hidden_config = root / 'scripts' / 'temporarily-hidden-photos.json'
+hidden_photos = {item['path'] for item in json.loads(hidden_config.read_text())['photos']} if hidden_config.exists() else set()
+
 albums = []
 for folder in sorted((root / 'website-photos').iterdir(), key=lambda p: p.name.lower()):
     if not folder.is_dir() or folder.name == 'About':
@@ -37,6 +40,7 @@ for folder in sorted((root / 'website-photos').iterdir(), key=lambda p: p.name.l
         order = [1, 2, 3, 13, 7, 6, 14, 5, 8, 9, 10, 11, 12, 4]
         rank = {number: index for index, number in enumerate(order)}
         photos.sort(key=lambda p: rank.get(int(re.match(r'\d+', p.name).group()), len(rank)))
+    photos = [p for p in photos if p.relative_to(root).as_posix() not in hidden_photos]
     albums.append({'id': folder.name.lower(), 'name': {'New-York': 'New York', 'UpstateNY': 'Upstate'}.get(folder.name, folder.name), 'photos': [p.relative_to(root).as_posix() for p in photos], 'sizes': [image_size(p) for p in photos]})
 (root / 'albums.js').write_text('const albums = ' + json.dumps(albums, indent=2) + ';\n')
 print('Generated {} albums with {} photographs.'.format(len(albums), sum(len(a['photos']) for a in albums)))

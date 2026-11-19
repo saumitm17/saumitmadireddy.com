@@ -315,7 +315,6 @@ const albums = [
       "website-photos/New-York/1_NY.jpeg",
       "website-photos/New-York/2NY.jpeg",
       "website-photos/New-York/3NY.jpeg",
-      "website-photos/New-York/13NY.jpeg",
       "website-photos/New-York/7NY.jpeg",
       "website-photos/New-York/6NY.jpeg",
       "website-photos/New-York/14NY.jpeg",
@@ -339,10 +338,6 @@ const albums = [
       [
         2282,
         1531
-      ],
-      [
-        2288,
-        1535
       ],
       [
         2288,
@@ -393,13 +388,11 @@ const albums = [
       "website-photos/UpstateNY/1_UpstateNY.JPG",
       "website-photos/UpstateNY/2_UpstateNY.JPG",
       "website-photos/UpstateNY/3_UpstateNY.JPG",
-      "website-photos/UpstateNY/4_UpstateNY.JPG",
       "website-photos/UpstateNY/5_UpstateNY.JPG",
       "website-photos/UpstateNY/6_UpstateNY.JPG",
       "website-photos/UpstateNY/7_UpstateNY.JPG",
       "website-photos/UpstateNY/8_UpstateNY.JPG",
-      "website-photos/UpstateNY/9_UpstateNY.JPG",
-      "website-photos/UpstateNY/10_UpstateNY.JPG"
+      "website-photos/UpstateNY/9_UpstateNY.JPG"
     ],
     "sizes": [
       [
@@ -415,10 +408,6 @@ const albums = [
         1228
       ],
       [
-        1535,
-        2288
-      ],
-      [
         1818,
         1228
       ],
@@ -437,10 +426,6 @@ const albums = [
       [
         1818,
         1228
-      ],
-      [
-        2288,
-        1535
       ]
     ]
   }

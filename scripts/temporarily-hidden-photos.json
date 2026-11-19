@@ -1,0 +1,20 @@
+{
+  "note": "Temporarily hidden at user request; retain originals. To restore all, empty photos and regenerate albums.js. Custom New York order already preserves their original positions.",
+  "photos": [
+    {
+      "path": "website-photos/UpstateNY/4_UpstateNY.JPG",
+      "album": "upstateny",
+      "restore_position": 4
+    },
+    {
+      "path": "website-photos/UpstateNY/10_UpstateNY.JPG",
+      "album": "upstateny",
+      "restore_position": 10
+    },
+    {
+      "path": "website-photos/New-York/13NY.jpeg",
+      "album": "new-york",
+      "restore_position": 4
+    }
+  ]
+}

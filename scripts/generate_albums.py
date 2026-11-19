@@ -34,7 +34,7 @@ for folder in sorted((root / 'website-photos').iterdir(), key=lambda p: p.name.l
     photos = sorted((p for p in folder.iterdir() if p.suffix.lower() in {'.jpg', '.jpeg', '.png', '.webp'}), key=lambda p: int(re.match(r'\d+', p.name).group()))
     if folder.name == 'New-York':
         # Custom slideshow order; preserve it when refreshing albums.
-        order = [1, 2, 3, 13, 7, 6, 14, 8, 5, 9, 10, 11, 12, 4]
+        order = [1, 2, 3, 13, 7, 6, 14, 5, 8, 9, 10, 11, 12, 4]
         rank = {number: index for index, number in enumerate(order)}
         photos.sort(key=lambda p: rank.get(int(re.match(r'\d+', p.name).group()), len(rank)))
     albums.append({'id': folder.name.lower(), 'name': {'New-York': 'New York', 'UpstateNY': 'Upstate'}.get(folder.name, folder.name), 'photos': [p.relative_to(root).as_posix() for p in photos], 'sizes': [image_size(p) for p in photos]})

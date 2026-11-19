@@ -281,5 +281,5 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  a[href="https://letterboxd.com/saumit/"] { cursor: url("assets/filmstrip-cursor.svg") 16 16, pointer; }
+  a[href="https://letterboxd.com/saumit/"] { cursor: url("assets/letterboxd-cursor.svg") 12 8, pointer; }
 }

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+ <defs>
+  <linearGradient id="back"><stop stop-color="#ddd"/><stop offset=".55" stop-color="#999"/><stop offset="1" stop-color="#eee"/></linearGradient>
+  <linearGradient id="front"><stop stop-color="#aaa"/><stop offset=".45" stop-color="#e5e5e5"/><stop offset="1" stop-color="#b5b5b5"/></linearGradient>
+  <pattern id="holes" width="3" height="3" patternUnits="userSpaceOnUse"><rect x=".5" y=".5" width="1.5" height="1.8" rx=".2" fill="#fff"/></pattern>
+ </defs>
+ <path d="M3 3C13 3 27 3 27 7V18C24 21 12 20 3 18Z" fill="url(#back)" stroke="#222" stroke-width=".7"/>
+ <path d="M3 3C13 3 27 3 27 7L27 9C23 6 12 6 3 6Z" fill="#171717"/>
+ <path d="M3 3.5C13 3.5 24 3.8 26 6.5L26 8C22 5.7 12 5.7 3 5.7Z" fill="url(#holes)"/>
+ <path d="M27 7C27 11 4 9 4 15V25C4 28 21 29 30 28V15C20 16 5 16 4 14C5 10 27 12 27 7Z" fill="url(#front)" stroke="#222" stroke-width=".7"/>
+ <path d="M27 7V9C24 13 5 11 4 15L4 13C6 9 25 11 27 7Z" fill="#222"/>
+ <path d="M5 12H26V14H5Z" fill="url(#holes)"/>
+ <path d="M4 14C8 17 22 16 30 15V18C21 19 7 19 4 17ZM4 25C8 28 22 27 30 26V29C20 30 5 30 4 27Z" fill="#111"/>
+ <path d="M5 16H30V18H5ZM5 27H30V29H5Z" fill="url(#holes)"/>
+ <path d="M17 18V27M12 6V10M22 6V9" fill="none" stroke="#333" stroke-width=".65"/>
+</svg>

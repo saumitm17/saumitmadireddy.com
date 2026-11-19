@@ -288,3 +288,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
 html.about-page, .about-page body { background-color: #708869; }
 .about-page .desktop-menu-switch[aria-expanded="true"],
 .about-page body[data-personal-menu="true"] .menu-switch { background: transparent; }
+
+/* About and TMI use bold black text for their active-page indicator. */
+a[href="about.html"][aria-current="page"],
+a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity: 1; }

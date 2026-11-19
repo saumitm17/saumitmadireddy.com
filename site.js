@@ -163,13 +163,17 @@ if (onAbout || onTmi || onVideo) {
     requestAnimationFrame(alignLandscapeControls);
   }
   const desktopPhotoNavigation = matchMedia('(min-width: 601px) and (hover: hover) and (pointer: fine)');
+  function photoZone(clientX, bounds) {
+    const fraction = (clientX - bounds.left) / bounds.width;
+    return fraction < 1 / 3 ? 'previous' : fraction < 2 / 3 ? 'gallery' : 'next';
+  }
   function updatePhotoCursor(event) {
     if (!desktopPhotoNavigation.matches || event.pointerType !== 'mouse') {
       delete photo.dataset.direction;
       return;
     }
     const bounds = photo.getBoundingClientRect();
-    photo.dataset.direction = event.clientX < bounds.left + bounds.width / 2 ? 'previous' : 'next';
+    photo.dataset.direction = photoZone(event.clientX, bounds);
   }
   photo.addEventListener('pointerenter', updatePhotoCursor);
   photo.addEventListener('pointermove', updatePhotoCursor);
@@ -177,7 +181,14 @@ if (onAbout || onTmi || onVideo) {
   photo.addEventListener('click', event => {
     if (gridOpen || !desktopPhotoNavigation.matches || (event.pointerType && event.pointerType !== 'mouse')) return;
     const bounds = photo.getBoundingClientRect();
-    const step = event.clientX < bounds.left + bounds.width / 2 ? -1 : 1;
+    const zone = photoZone(event.clientX, bounds);
+    if (zone === 'gallery') {
+      delete photo.dataset.direction;
+      setGrid(true);
+      grid.querySelector('button')?.focus({preventScroll: true});
+      return;
+    }
+    const step = zone === 'previous' ? -1 : 1;
     index = (index + step + album.photos.length) % album.photos.length;
     showPhoto();
   });

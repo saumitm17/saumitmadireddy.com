@@ -293,7 +293,6 @@ html.about-page, .about-page body { background-color: #282a21; }
 a[href="about.html"][aria-current="page"],
 a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity: 1; }
 
-.about .portrait { border: 4px solid #f0f7f4; }
 
 .about-page { color: #f0f7f4; }
 .about-page button,
@@ -303,3 +302,5 @@ a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity
 .about-page .menu-switch { border-color: #f0f7f4; background: #f0f7f4; }
 .about-page .desktop-menu-switch[aria-expanded="true"],
 .about-page body[data-personal-menu="true"] .menu-switch { background: transparent; }
+
+.about .portrait { border: 3px solid #402e2a; }

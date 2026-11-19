@@ -37,7 +37,7 @@ if (onTmi) {
   const paragraph = document.querySelector('.sleeping-message');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let typingTimer;
-  function typeMessage(target, message, trailingDots = false) {
+  function typeMessage(target, message, trailingDots = false, delay = 300) {
     window.clearTimeout(typingTimer);
     dots.textContent = '';
     target.textContent = '';
@@ -54,11 +54,37 @@ if (onTmi) {
     if (reducedMotion) {
       target.textContent = message;
       if (trailingDots) dots.textContent = '.........';
-    } else typingTimer = window.setTimeout(typeLetter, 300);
+    } else typingTimer = window.setTimeout(typeLetter, delay);
   }
   typeMessage(typing, 'saumit is sleeping right now', true);
   let clicks = 0;
-  document.addEventListener('click', () => {
+  let darknessScene = null;
+  let starsReady = false;
+  let starClicks = 0;
+  function shootStar(x, y) {
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.hypot(window.innerWidth, window.innerHeight) + 120;
+    const star = document.createElement('span');
+    star.className = 'tmi-shooting-star';
+    star.setAttribute('aria-hidden', 'true');
+    star.style.left = `${x}px`;
+    star.style.top = `${y}px`;
+    star.style.setProperty('--star-x', `${Math.cos(angle) * distance}px`);
+    star.style.setProperty('--star-y', `${Math.sin(angle) * distance}px`);
+    star.style.setProperty('--star-angle', `${angle}rad`);
+    star.style.setProperty('--star-duration', `${900 + Math.random() * 700}ms`);
+    darknessScene.append(star);
+    star.addEventListener('animationend', () => star.remove(), {once: true});
+    window.setTimeout(() => star.remove(), 2000);
+  }
+  document.addEventListener('click', event => {
+    if (darknessScene) {
+      if (!starsReady) return;
+      starClicks += 1;
+      if (starClicks <= 5) shootStar(event.clientX, event.clientY);
+      else window.location.assign('index.html');
+      return;
+    }
     clicks += 1;
     if (clicks === 5) {
       const message = 'it sounds like a jet engine right now. he snores so loud. you will not wake him up.';
@@ -71,14 +97,20 @@ if (onTmi) {
       const darkness = document.createElement('div');
       darkness.className = 'tmi-darkness';
       darkness.setAttribute('role', 'status');
-      darkness.setAttribute('aria-label', message);
+      darkness.setAttribute('aria-label', '');
       const text = document.createElement('p');
       text.setAttribute('aria-hidden', 'true');
       darkness.append(text);
       document.body.append(darkness);
       document.documentElement.classList.add('tmi-is-dark');
       window.scrollTo(0, 0);
-      typeMessage(text, message);
+      darknessScene = darkness;
+      window.clearTimeout(typingTimer);
+      window.setTimeout(() => {
+        darkness.setAttribute('aria-label', message);
+        typeMessage(text, message, false, 0);
+        starsReady = true;
+      }, 5000);
     }
   });
 }

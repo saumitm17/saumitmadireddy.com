@@ -331,3 +331,10 @@ html.tmi-is-dark, .tmi-is-dark body { background: #000; overflow: hidden; }
 .tmi-is-dark body > :not(.tmi-darkness) { display: none !important; }
 .tmi-darkness { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; background: #000; }
 .tmi-darkness p { width: min(600px, 100%); margin: 0; font-size: 16px; line-height: 1.8; text-align: center; color: #ffe990; text-shadow: 0 0 6px #ffd84d, 0 0 20px rgba(255, 211, 64, .65); }
+
+.tmi-shooting-star { position: absolute; width: 3px; height: 3px; pointer-events: none; animation: tmi-star-flight var(--star-duration) ease-in forwards; }
+.tmi-shooting-star::before { content: ""; position: absolute; right: 0; top: 0; width: 90px; height: 2px; transform-origin: right center; transform: rotate(var(--star-angle)); background: linear-gradient(to right, transparent, #ffe990); box-shadow: 0 0 6px rgba(255, 225, 130, .5); }
+.tmi-shooting-star::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #fff9d9; box-shadow: 0 0 7px 2px #ffe990; }
+@keyframes tmi-star-flight { from { transform: translate(0, 0); opacity: 1; } to { transform: translate(var(--star-x), var(--star-y)); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tmi-shooting-star { animation: tmi-star-flash 600ms ease-out forwards; } }
+@keyframes tmi-star-flash { from { opacity: 1; } to { opacity: 0; } }

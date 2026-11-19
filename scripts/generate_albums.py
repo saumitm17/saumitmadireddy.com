@@ -32,6 +32,11 @@ for folder in sorted((root / 'website-photos').iterdir(), key=lambda p: p.name.l
     if not folder.is_dir() or folder.name == 'About':
         continue
     photos = sorted((p for p in folder.iterdir() if p.suffix.lower() in {'.jpg', '.jpeg', '.png', '.webp'}), key=lambda p: int(re.match(r'\d+', p.name).group()))
+    if folder.name == 'New-York':
+        # Flower portrait fourth, subway tunnel ninth, former fourth last.
+        order = [1, 2, 3, 13, 5, 6, 7, 8, 14, 9, 10, 11, 12, 4]
+        rank = {number: index for index, number in enumerate(order)}
+        photos.sort(key=lambda p: rank.get(int(re.match(r'\d+', p.name).group()), len(rank)))
     albums.append({'id': folder.name.lower(), 'name': {'New-York': 'New York', 'UpstateNY': 'Upstate'}.get(folder.name, folder.name), 'photos': [p.relative_to(root).as_posix() for p in photos], 'sizes': [image_size(p) for p in photos]})
 (root / 'albums.js').write_text('const albums = ' + json.dumps(albums, indent=2) + ';\n')
 print('Generated {} albums with {} photographs.'.format(len(albums), sum(len(a['photos']) for a in albums)))

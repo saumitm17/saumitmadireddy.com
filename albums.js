@@ -315,17 +315,17 @@ const albums = [
       "website-photos/New-York/1_NY.jpeg",
       "website-photos/New-York/2NY.jpeg",
       "website-photos/New-York/3NY.jpeg",
-      "website-photos/New-York/4NY.jpeg",
+      "website-photos/New-York/13NY.jpeg",
       "website-photos/New-York/5NY.jpeg",
       "website-photos/New-York/6NY.jpeg",
       "website-photos/New-York/7NY.jpeg",
       "website-photos/New-York/8NY.jpeg",
+      "website-photos/New-York/14NY.jpeg",
       "website-photos/New-York/9NY.jpeg",
       "website-photos/New-York/10NY.jpeg",
       "website-photos/New-York/11NY.jpeg",
       "website-photos/New-York/12NY.jpeg",
-      "website-photos/New-York/13NY.jpeg",
-      "website-photos/New-York/14NY.jpeg"
+      "website-photos/New-York/4NY.jpeg"
     ],
     "sizes": [
       [
@@ -361,6 +361,10 @@ const albums = [
         2287
       ],
       [
+        1475,
+        2197
+      ],
+      [
         2288,
         1535
       ],
@@ -379,10 +383,6 @@ const albums = [
       [
         2288,
         1535
-      ],
-      [
-        1475,
-        2197
       ]
     ]
   },

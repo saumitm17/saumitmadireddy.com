@@ -284,7 +284,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   a[href="https://letterboxd.com/saumit/"] { cursor: url("assets/letterboxd-cursor.svg") 12 8, pointer; }
 }
 
-/* Warm beige is limited to the About page, including overscroll areas. */
-html.about-page, .about-page body { background-color: #ddc3a7; }
+/* About page background includes overscroll areas. */
+html.about-page, .about-page body { background-color: #708869; }
 .about-page .desktop-menu-switch[aria-expanded="true"],
 .about-page body[data-personal-menu="true"] .menu-switch { background: transparent; }

@@ -292,3 +292,5 @@ html.about-page, .about-page body { background-color: #708869; }
 /* About and TMI use bold black text for their active-page indicator. */
 a[href="about.html"][aria-current="page"],
 a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity: 1; }
+
+.about .portrait { border: 1px solid rgba(0, 0, 0, .5); }

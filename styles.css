@@ -304,3 +304,17 @@ a[href="tmi.html"][aria-current="page"] { color: #000; font-weight: 700; opacity
 .about-page body[data-personal-menu="true"] .menu-switch { background: transparent; }
 
 .about .portrait { border: 3px solid #673d4b; }
+
+.tmi { width: 100%; text-align: center; }
+.tmi p { margin: 0; font-size: 16px; line-height: 1.8; }
+@media (min-width: 601px) {
+  .tmi-page main { margin-left: var(--name-right, 180px); padding-left: var(--page-inset); padding-right: var(--page-inset); }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .tmi-page body { min-height: 100svh; grid-template-rows: auto auto auto minmax(260px, 1fr); }
+  .tmi-page main { height: 100%; align-items: center; }
+  .tmi p { font-size: 15px; }
+}
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  .tmi-page main { margin-left: calc(172px + env(safe-area-inset-left)); padding: calc(20px + env(safe-area-inset-top)) calc(24px + env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) 20px; }
+}

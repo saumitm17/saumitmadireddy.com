@@ -24,6 +24,14 @@ function swipeStep(dx, dy, elapsed) {
 const onAbout = location.pathname.endsWith('/about.html');
 const onTmi = location.pathname.endsWith('/tmi.html');
 const onVideo = location.pathname.endsWith('/video.html');
+if (onTmi) {
+  const name = document.querySelector('.name');
+  const alignTmiArea = () => document.documentElement.style.setProperty('--name-right', `${name.getBoundingClientRect().right}px`);
+  new ResizeObserver(alignTmiArea).observe(name);
+  window.addEventListener('resize', alignTmiArea);
+  document.fonts.ready.then(alignTmiArea);
+  alignTmiArea();
+}
 const nav = document.getElementById('albums');
 for (const album of albums) {
   const link = document.createElement('a');

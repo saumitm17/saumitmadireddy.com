@@ -279,3 +279,7 @@ main:has(.photo-grid:not([hidden])) { align-items: flex-start; }
   #photo[data-direction="next"] { cursor: e-resize; }
   #photo[data-direction="gallery"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' fill='none' stroke='white' stroke-width='3'/%3E%3Ccircle cx='12' cy='12' r='7' fill='none' stroke='black' stroke-width='1'/%3E%3C/svg%3E") 12 12, pointer; }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  a[href="https://letterboxd.com/saumit/"] { cursor: url("assets/movie-camera-cursor.svg") 16 16, pointer; }
+}

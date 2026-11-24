@@ -229,7 +229,7 @@ if (onAbout || onTmi || onVideo) {
     album = albums.find(a => a.id === location.hash.slice(1)) || albums.find(a => a.id === 'albania');
     index = 0;
     setGrid(false);
-    document.title = `${album.name} — Saumit Madireddy`;
+    document.title = location.hash ? `${album.name} — Saumit Madireddy` : 'Saumit Madireddy';
     for (const link of nav.children) {
       if (link.dataset.album === album.id) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
